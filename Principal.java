@@ -102,13 +102,19 @@ public class Principal
                     System.out.println("Ingrese un color: ");
                     String color = scan.next();
                     String carrosColor = "";
+                    boolean vehiculoColor = false;
                     for(int i =0; i<Sensor.sensores.length; i ++){
                         for(int j = 0; j < Sensor.sensores[i].length; j++){
                             if((Vehiculo.vehiculos[i][j]!= null) && (Vehiculo.vehiculos[i][j].getColor().equalsIgnoreCase(color))){
                                 carrosColor = carrosColor + Vehiculo.vehiculos[i][j].toString() + "\n"; 
+                                vehiculoColor = true;
                             }
                         }
                     }
+                    if(vehiculoColor == false){
+                    System.out.println("No hay vehiculos de ese color");
+                    }
+                    
                     System.out.println(carrosColor);
                     break;
                 case 9:
