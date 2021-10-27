@@ -93,7 +93,7 @@ public class Principal
                     piso = scan.nextInt();
                     System.out.println("Ingrese el espacio ");
                     espacio = scan.nextInt();
-                    System.out.println(Sensor.sensores[piso][espacio].toString());
+                    System.out.println(Sensor.sensores[piso][espacio].toString() + "\n");
                     break;
                 case 7:
                     System.out.println(Sensor.sensoresEstado());
