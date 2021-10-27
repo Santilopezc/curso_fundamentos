@@ -38,9 +38,9 @@ public class Principal
                     break;
                 case 2:
                     System.out.println("En que piso desea parquear ");
-                    int piso = scan.nextInt();
+                    int piso = scan.nextInt() - 1;
                     System.out.println("En que espacio desea parquear ");
-                    int espacio = scan.nextInt();
+                    int espacio = scan.nextInt() - 1;
                     if(Vehiculo.vehiculos[piso][espacio] != null){
                         System.out.println("No se puede realizar la accion");
                     }
@@ -60,9 +60,9 @@ public class Principal
 
                 case 3:
                     System.out.println("En que piso desea parquear ");
-                    piso = scan.nextInt();
+                    piso = scan.nextInt() - 1;
                     System.out.println("En que espacio parquear ");
-                    espacio = scan.nextInt();
+                    espacio = scan.nextInt() - 1;
                     if(Vehiculo.vehiculos[piso][espacio] != null){
                         System.out.println("No se puede realizar la accion");
                     }
@@ -90,9 +90,9 @@ public class Principal
                     break;
                 case 6:
                     System.out.println("Ingrese el piso ");
-                    piso = scan.nextInt();
+                    piso = scan.nextInt() - 1;
                     System.out.println("Ingrese el espacio ");
-                    espacio = scan.nextInt();
+                    espacio = scan.nextInt() - 1;
                     System.out.println(Sensor.sensores[piso][espacio].toString() + "\n");
                     break;
                 case 7:

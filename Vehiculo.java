@@ -37,7 +37,7 @@ public class Vehiculo
         for(int i =0; i< Vehiculo.vehiculos.length; i ++){
             for(int j = 0; j <Vehiculo.vehiculos[i].length; j++){
                 if(vehiculos[i][j]!= null){
-                    informacion = informacion + vehiculos[i][j].toString();
+                    informacion = informacion + vehiculos[i][j].toString() + "\n";
                 }
             }
         }

@@ -37,7 +37,7 @@ public class Sensor
             for(int j = 0; j < Sensor.sensores[i].length; j++){
                 if(Sensor.sensores[i][j].toString().equals("Libre")){
                     espaciosDisponibles = espaciosDisponibles +"Piso: ";
-                    espaciosDisponibles = espaciosDisponibles + i + "\n" + "Espacio: "  + j + "\n" +sensores[i][j].toString() + "\n" + "\n";
+                    espaciosDisponibles = espaciosDisponibles + (i + 1 )+ "\n" + "Espacio: "  + (j + 1) + "\n" +sensores[i][j].toString() + "\n" + "\n";
                 }
             }
         }
@@ -48,7 +48,7 @@ public class Sensor
         String sensor = "";
         for(int i =0; i<Sensor.sensores.length; i ++){
             for(int j = 0; j < Sensor.sensores[i].length; j++){
-                sensor = sensor +"Piso: " + i + "\n" + "Espacio: " + j + "\n" + "Estado: " + sensores[i][j].toString() + "\n" + "\n";
+                sensor = sensor +"Piso: " + (i + 1) + "\n" + "Espacio: " + (j + 1) + "\n" + "Estado: " + sensores[i][j].toString() + "\n" + "\n";
             }
         }
         return sensor;
