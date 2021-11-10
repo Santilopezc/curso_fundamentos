@@ -1,3 +1,4 @@
+import java.util.Date;
 
 public class Vehiculo
 {
@@ -8,6 +9,7 @@ public class Vehiculo
     private String marca;
     private String color;
     private int valorComercial;
+    private Date fecha;
 
     public Vehiculo(){}
 
@@ -20,6 +22,7 @@ public class Vehiculo
         this.marca = m;
         this.color = c;
         this.valorComercial = v;
+        fecha = new Date();
         Vehiculo.cantidad = Vehiculo.cantidad + 1;
     }
 
@@ -28,6 +31,7 @@ public class Vehiculo
         String placa = this.placa;
         String color = this.color;
         int valor = this.valorComercial;
+        
         String info = "Placa: " + placa + "\n" + "Marca: " + marca+ "\n" + "Color: " + color + "\n" + "Valor: " + valor + "\n";
         return info;
     }    
@@ -87,7 +91,9 @@ public class Vehiculo
         return cantidad;
     }
 
-
+    public Date getFecha(){
+    return this.fecha;
+    }
     public void setPlaca(String p){
         this.placa = p;
     }

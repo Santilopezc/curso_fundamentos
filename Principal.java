@@ -1,12 +1,21 @@
 import java.util.Scanner;
+
 public class Principal
 {
     public static void main(String[]args){
         Scanner scan = new Scanner(System.in);
         System.out.print("Ingrese la cantidad de pisos: ");
         int pisos = scan.nextInt();
+        
         System.out.print("Ingrese la cantidad de espacios: ");
         int espacios = scan.nextInt();
+        
+        System.out.print("Ingrese el valor de la hora para carros: ");
+        Carro.valorHora = scan.nextInt();
+        
+        System.out.print("Ingrese el valor de la hora para motos: ");
+        Moto.valorHora = scan.nextInt();
+        
         Vehiculo.vehiculos = new Vehiculo[pisos][espacios];
         Sensor.sensores = new Sensor[pisos][espacios];
         Vehiculo.tamano = pisos * espacios;
@@ -26,7 +35,8 @@ public class Principal
         System.out.println("6: Revisar la disponibilidad de un parqueadero");
         System.out.println("7: Mostrar la disponibilidad de todos los parqueaderos");
         System.out.println("8: Mostrar todos los carros de un color");
-        System.out.println("9: Mostrar los vehiculos ordenados por valor comercial");    
+        System.out.println("9: Mostrar los vehiculos ordenados por valor comercial");
+        System.out.println("10: Sacar vehiculo del parqueadero");
         int accion = scan.nextInt();
         while(accion != 0){
             switch(accion){
@@ -52,9 +62,19 @@ public class Principal
                         String marca = scan.next();
                         System.out.println("Ingrese el color");
                         String color = scan.next();
-                        Vehiculo v1 = new Vehiculo(placa, marca, color);
-                        Vehiculo.vehiculos[piso][espacio] = v1;
-                        Sensor.sensores[piso][espacio].setEstado(1);
+                        System.out.println("Ingrese el tipo de Vehiculo");
+                        String tipo = scan.next();
+                        if(tipo.equalsIgnoreCase("Carro")){
+                            Carro c1 = new Carro(placa, marca, color);
+                            Vehiculo.vehiculos[piso][espacio] = c1;
+                            Sensor.sensores[piso][espacio].setEstado(1);
+                        }
+                        
+                        else if(tipo.equalsIgnoreCase("Moto")){
+                            Moto m1 = new Moto(placa, marca, color);
+                            Vehiculo.vehiculos[piso][espacio] = m1;
+                            Sensor.sensores[piso][espacio].setEstado(1);
+                        }
                     }
                     break;
 
@@ -76,10 +96,19 @@ public class Principal
                         String color = scan.next();
                         System.out.println("Ingrese el valor del vehiculo");
                         int valor = scan.nextInt();
-                        Vehiculo v1 = new Vehiculo(placa, marca, color, valor);
-                        Vehiculo.vehiculos[piso][espacio] = v1;
-                        Vehiculo.vehiculos[piso][espacio] = v1;
-                        Sensor.sensores[piso][espacio].setEstado(1);
+                        System.out.println("Ingrese el tipo de Vehiculo");
+                        String tipo = scan.next();
+                        if(tipo.equalsIgnoreCase("Carro")){
+                            Carro c1 = new Carro(placa, marca, color, valor);
+                            Vehiculo.vehiculos[piso][espacio] = c1;
+                            Sensor.sensores[piso][espacio].setEstado(1);
+                        }
+                        
+                        else if(tipo.equalsIgnoreCase("Moto")){
+                            Moto m1 = new Moto(placa, marca, color, valor);
+                            Vehiculo.vehiculos[piso][espacio] = m1;
+                            Sensor.sensores[piso][espacio].setEstado(1);
+                        }
                     }
                     break;
                 case 4:
@@ -112,29 +141,38 @@ public class Principal
                         }
                     }
                     if(vehiculoColor == false){
-                    System.out.println("No hay vehiculos de ese color");
+                        System.out.println("No hay vehiculos de ese color");
                     }
-                    
+
                     System.out.println(carrosColor);
                     break;
                 case 9:
                     System.out.println(Vehiculo.ordenarPorValor(Vehiculo.vehiculos));
+                    break;
+                case 10:
+                    System.out.println("En que piso desea parquear ");
+                    piso = scan.nextInt() - 1;
+                    System.out.println("En que espacio desea parquear ");
+                    espacio = scan.nextInt() - 1;
+                    
+                    
                 default:
                     System.out.println("Comando Incorrecto");
-                    
+
             }
-        System.out.println("Que desea hacer: ");
-        System.out.println("0: Salir");
-        System.out.println("1: Imprimir los sensores desocupados");
-        System.out.println("2: Ingresar un vehiculo en el parqueado");
-        System.out.println("3: Ingresar un vehiculo en el parqueado con valor");
-        System.out.println("4: Mostrar la informacion de todos los vehiculos");
-        System.out.println("5: Mostrar la cantidad de vehiculos");
-        System.out.println("6: Revisar la disponibilidad de un parqueadero");
-        System.out.println("7: Mostrar la disponibilidad de todos los parqueaderos");
-        System.out.println("8: Mostrar todos los carros de un color");
-        System.out.println("9: Mostrar los vehiculos ordenados por valor comercial"); 
-        accion = scan.nextInt();
+            System.out.println("Que desea hacer: ");
+            System.out.println("0: Salir");
+            System.out.println("1: Imprimir los sensores desocupados");
+            System.out.println("2: Ingresar un vehiculo en el parqueado");
+            System.out.println("3: Ingresar un vehiculo en el parqueado con valor");
+            System.out.println("4: Mostrar la informacion de todos los vehiculos");
+            System.out.println("5: Mostrar la cantidad de vehiculos");
+            System.out.println("6: Revisar la disponibilidad de un parqueadero");
+            System.out.println("7: Mostrar la disponibilidad de todos los parqueaderos");
+            System.out.println("8: Mostrar todos los carros de un color");
+            System.out.println("9: Mostrar los vehiculos ordenados por valor comercial");
+            System.out.println("10: Sacar vehiculo del parqueadero");
+            accion = scan.nextInt();
         }
         System.out.println("Saliendo");
     }
