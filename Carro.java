@@ -38,19 +38,13 @@ public class Carro extends Vehiculo
         valorParqueadero = valorParqueadero + ((this.valorHora/60)*((60-this.getMinuto())+(60-tiempoFaltante)));
         int minutosParqueadero = 0;
         int horasParqueadero = salida.getHours() - this.getHora();
-        
-        if(horasParqueadero > 0 ) {
-            minutosParqueadero = ((60-this.getMinuto())+ salida.getMinutes()); 
+
+        if(salida.getMinutes() >= this.getMinuto()){
+            minutosParqueadero = salida.getMinutes() - this.getMinuto();
         }
 
-        else{ 
-            if(salida.getMinutes() >= this.getMinuto()){
-                minutosParqueadero = salida.getMinutes() - this.getMinuto();
-            }
-
-            else{
-                minutosParqueadero = salida.getMinutes() + (60 - this.getMinuto());
-            }
+        else{
+            minutosParqueadero = salida.getMinutes() + (60 - this.getMinuto());
         }
         int valorCobro = (this.valorHora * horasParqueadero) + ((this.valorHora/60) * minutosParqueadero);
         String cobro = "Tiempo en el parqueadero: " + "\n";
