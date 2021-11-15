@@ -1,21 +1,25 @@
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Date;
 
 public class Principal
 {
-    public static void main(String[]args){
+    public static void main(String[]args) throws IOException{
         Scanner scan = new Scanner(System.in);
         System.out.print("Ingrese la cantidad de pisos: ");
         int pisos = scan.nextInt();
-        
+
         System.out.print("Ingrese la cantidad de espacios: ");
         int espacios = scan.nextInt();
-        
+
         System.out.print("Ingrese el valor de la hora para carros: ");
         Carro.valorHora = scan.nextInt();
-        
+
         System.out.print("Ingrese el valor de la hora para motos: ");
         Moto.valorHora = scan.nextInt();
-        
+
         Vehiculo.vehiculos = new Vehiculo[pisos][espacios];
         Sensor.sensores = new Sensor[pisos][espacios];
         Vehiculo.tamano = pisos * espacios;
@@ -37,6 +41,7 @@ public class Principal
         System.out.println("8: Mostrar todos los carros de un color");
         System.out.println("9: Mostrar los vehiculos ordenados por valor comercial");
         System.out.println("10: Sacar vehiculo del parqueadero");
+        System.out.println("11: Crear un archivo con la informacion de los vehiculos");
         int accion = scan.nextInt();
         while(accion != 0){
             switch(accion){
@@ -69,7 +74,7 @@ public class Principal
                             Vehiculo.vehiculos[piso][espacio] = c1;
                             Sensor.sensores[piso][espacio].setEstado(1);
                         }
-                        
+
                         else if(tipo.equalsIgnoreCase("Moto")){
                             Moto m1 = new Moto(placa, marca, color);
                             Vehiculo.vehiculos[piso][espacio] = m1;
@@ -103,7 +108,7 @@ public class Principal
                             Vehiculo.vehiculos[piso][espacio] = c1;
                             Sensor.sensores[piso][espacio].setEstado(1);
                         }
-                        
+
                         else if(tipo.equalsIgnoreCase("Moto")){
                             Moto m1 = new Moto(placa, marca, color, valor);
                             Vehiculo.vehiculos[piso][espacio] = m1;
@@ -150,12 +155,29 @@ public class Principal
                     System.out.println(Vehiculo.ordenarPorValor(Vehiculo.vehiculos));
                     break;
                 case 10:
-                    System.out.println("En que piso desea parquear ");
+                    System.out.println("En que piso esta el vehiculo: ");
                     piso = scan.nextInt() - 1;
-                    System.out.println("En que espacio desea parquear ");
+                    System.out.println("En que espacio esta el vehiculo: ");
                     espacio = scan.nextInt() - 1;
-                    
-                    
+                    if(Vehiculo.vehiculos[piso][espacio] != null){
+                        Vehiculo.vehiculos[piso][espacio].sacarVehiculo();
+                        Vehiculo.vehiculos[piso][espacio] = null;
+                        Sensor.sensores[piso][espacio].setEstado(0);
+                    }
+                    else{
+                        System.out.println("No hay un vehiculo en ese espacio");
+                    }
+
+                    //Date salida = new Date();
+
+                    break;
+                case 11:
+                    FileWriter archivo = new FileWriter("D:/Santi/Universidad/2021 - 2/Fundamentos de Programacion/Proyecto/texto.txt"); 
+                    //D:/Santi/Universidad/2021 - 2/Fundamentos de Programacion/Proyecto/texto.txt
+                    archivo.write(Vehiculo.toStringVehiculos());
+                    archivo.close();
+                    break;
+
                 default:
                     System.out.println("Comando Incorrecto");
 
@@ -172,6 +194,7 @@ public class Principal
             System.out.println("8: Mostrar todos los carros de un color");
             System.out.println("9: Mostrar los vehiculos ordenados por valor comercial");
             System.out.println("10: Sacar vehiculo del parqueadero");
+            System.out.println("11: Crear un archivo con la informacion de los vehiculos");
             accion = scan.nextInt();
         }
         System.out.println("Saliendo");

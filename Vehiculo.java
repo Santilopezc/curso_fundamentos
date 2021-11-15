@@ -10,6 +10,8 @@ public class Vehiculo
     private String color;
     private int valorComercial;
     private Date fecha;
+    private int minEntrada;
+    private int horaEntrada;
 
     public Vehiculo(){}
 
@@ -23,6 +25,8 @@ public class Vehiculo
         this.color = c;
         this.valorComercial = v;
         fecha = new Date();
+        //this.minEntrada = fecha.getMinutes();
+        //this.horaEntrada = fecha.getHours();
         Vehiculo.cantidad = Vehiculo.cantidad + 1;
     }
 
@@ -84,7 +88,11 @@ public class Vehiculo
 
         return valoresOrdenados;
     }
-
+    
+    public void sacarVehiculo(){
+    // Se ejecutaen los hijos
+    }
+    
     public static int cantidadVehiculos(){
         int cantidad = Vehiculo.cantidad;
 
@@ -94,6 +102,15 @@ public class Vehiculo
     public Date getFecha(){
     return this.fecha;
     }
+    
+    public int getMinuto(){
+    return this.fecha.getMinutes();
+    }
+    
+    public int getHora(){
+    return this.fecha.getHours();
+    }
+    
     public void setPlaca(String p){
         this.placa = p;
     }
