@@ -32,26 +32,17 @@ public class Carro extends Vehiculo
 
     @Override
     public void sacarVehiculo(){
+        
         Date salida = new Date();
-        int tiempoFaltante = 60 - salida.getMinutes();
-        int valorParqueadero = this.valorHora * (salida.getHours() - this.getHora());
-        valorParqueadero = valorParqueadero + ((this.valorHora/60)*((60-this.getMinuto())+(60-tiempoFaltante)));
-        int minutosParqueadero = 0;
-        int horasParqueadero = salida.getHours() - this.getHora();
-
-        if(salida.getMinutes() >= this.getMinuto()){
-            minutosParqueadero = salida.getMinutes() - this.getMinuto();
-        }
-
-        else{
-            minutosParqueadero = salida.getMinutes() + (60 - this.getMinuto());
-        }
-        int valorCobro = (this.valorHora * horasParqueadero) + ((this.valorHora/60) * minutosParqueadero);
-        String cobro = "Tiempo en el parqueadero: " + "\n";
-        cobro = cobro + "Horas: " + horasParqueadero + "\n";
-        cobro = cobro + "Minutos: " + minutosParqueadero + "\n";
-        cobro = cobro + "Valor a cobrar: " + valorCobro;
+        int horaSalida = salida.getHours() * 3600;
+        int minutoSalida = salida.getMinutes() * 60;
+        int tiempoSalida = horaSalida + minutoSalida;
+        int tiempoEntrada = this.getHora() + this.getMinuto();
+        int tiempoParqueo = tiempoSalida - tiempoEntrada;
+        int precioParqueadero = (tiempoParqueo/60) * (valorHora/60);
+        
+        String cobro = "Valor a cobrar: " + precioParqueadero + "\n";
         System.out.println(cobro);
-
     }
+
 }

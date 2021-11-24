@@ -90,7 +90,6 @@ public class Vehiculo
     }
     
     public void sacarVehiculo(){
-    // Se ejecutaen los hijos
     }
     
     public static int cantidadVehiculos(){
@@ -104,11 +103,11 @@ public class Vehiculo
     }
     
     public int getMinuto(){
-    return this.fecha.getMinutes();
+    return this.fecha.getMinutes() * 60;
     }
     
     public int getHora(){
-    return this.fecha.getHours();
+    return this.fecha.getHours() * 3600;
     }
     
     public void setPlaca(String p){
