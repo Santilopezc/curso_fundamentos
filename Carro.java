@@ -31,7 +31,7 @@ public class Carro extends Vehiculo
     }
 
     @Override
-    public void sacarVehiculo(){
+    public String sacarVehiculo(){
         
         Date salida = new Date();
         int horaSalida = salida.getHours() * 3600;
@@ -42,7 +42,7 @@ public class Carro extends Vehiculo
         int precioParqueadero = (tiempoParqueo/60) * (valorHora/60);
         
         String cobro = "Valor a cobrar: " + precioParqueadero + "\n";
-        System.out.println(cobro);
+        return cobro;
     }
 
 }

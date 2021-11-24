@@ -89,7 +89,8 @@ public class Vehiculo
         return valoresOrdenados;
     }
     
-    public void sacarVehiculo(){
+    public String sacarVehiculo(){
+        return "";
     }
     
     public static int cantidadVehiculos(){

@@ -160,7 +160,7 @@ public class Principal
                     System.out.println("En que espacio esta el vehiculo: ");
                     espacio = scan.nextInt() - 1;
                     if(Vehiculo.vehiculos[piso][espacio] != null){
-                        Vehiculo.vehiculos[piso][espacio].sacarVehiculo();
+                        System.out.println(Vehiculo.vehiculos[piso][espacio].sacarVehiculo());
                         Vehiculo.vehiculos[piso][espacio] = null;
                         Sensor.sensores[piso][espacio].setEstado(0);
                     }
